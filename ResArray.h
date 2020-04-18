@@ -38,29 +38,31 @@ class ResArray
         /******************************************************************************************************
         * Func  : add
         * Desc  : Adds an element to the end of the array. Expands the array if the current array is totally filled.
-        * Param : element - an element to add.
+        * Param : element - a constant reference to the element to be added.
         * Ret   : None
         ******************************************************************************************************/
-        void add(T element);
+        void add(const T& element);
         
 
         /******************************************************************************************************
         * Func  : add
         * Desc  : Adds an element to the specified index of the array. Expands the array if the current array is 
         *         totally filled.
-        * Param : element - an element to add.
+        * Param : index     - index to add the element
+        *         element   - a constant reference to the element to be added.
         * Ret   : None
         ******************************************************************************************************/
-        void add(unsigned int index, T element);
+        void add(unsigned int index, const T& element);
         
 
         /******************************************************************************************************
         * Func  : set
         * Desc  : Updates the specified index with the new element.
-        * Param : element - an element to add.
+        * Param : index     - index to update
+        *         element   - a constant reference to the new element.
         * Ret   : None
         ******************************************************************************************************/
-        void set(unsigned int index, T element);
+        void set(unsigned int index, const T& element);
 
 
         /******************************************************************************************************
@@ -94,20 +96,20 @@ class ResArray
         * Func  : indexOf
         * Desc  : Returns the index of the first occurrence of the specified element in this list, 
         *         or -1 if this list does not contain the element.
-        * Param : element - element to search for
+        * Param : element - constant reference to the element to be searched.
         * Ret   : The index of the first occurrence of the specified element in this list, or -1 if this list 
         *         does not contain the element
         ******************************************************************************************************/
-        int indexOf(T element);
+        int indexOf(const T& element);
 
 
         /******************************************************************************************************
         * Func  : contains
         * Desc  : Returns true if this list contains atleast one of the specified element.
-        * Param : elemnt - element whose presence in this list is to be tested.
+        * Param : elemnt - constant reference to the element whose presence in this list is to be tested.
         * Ret   : true if this list contains the specified element. Otherwise false.
         ******************************************************************************************************/
-        bool contains(T element);
+        bool contains(const T& element);
 
 
         /******************************************************************************************************
@@ -138,7 +140,7 @@ ResArray<T>::ResArray(unsigned int resize_step_size)
 }
 
 template <class T>
-void ResArray<T>::add(T element)
+void ResArray<T>::add(const T& element)
 {
     if(length == arr_length) //checks whether the current array is totally filled.
     {
@@ -153,7 +155,7 @@ void ResArray<T>::add(T element)
 }
 
 template <class T>
-void ResArray<T>::add(unsigned int index, T element)
+void ResArray<T>::add(unsigned int index, const T& element)
 {
     if (index >= length)
     {
@@ -182,7 +184,7 @@ void ResArray<T>::add(unsigned int index, T element)
 
 
 template <class T>
-void ResArray<T>::set(unsigned int index, T element)
+void ResArray<T>::set(unsigned int index, const T& element)
 {
     if (index >= length)
     {
@@ -219,7 +221,7 @@ unsigned int ResArray<T>::size()
 }
 
 template <class T>
-int ResArray<T>::indexOf(T element)
+int ResArray<T>::indexOf(const T& element)
 {
     for(int i = 0; i < length; i++)
     {
@@ -233,7 +235,7 @@ int ResArray<T>::indexOf(T element)
 
 
 template <class T>
-bool ResArray<T>::contains(T element)
+bool ResArray<T>::contains(const T& element)
 {
     return (this->indexOf(element)) > -1;
 }
